@@ -1,11 +1,27 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\BackgroundImage;
+use App\Models\Card;
+use App\Models\Quotation;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function() {
     return redirect()->route('login');
+});
+
+Route::get('/{card}', function ($card) {
+
+    $card = Card::where('uuid', $card)->first();
+
+    if(!$card) {
+        abort(404);
+    }
+
+    $bg_image = BackgroundImage::inRandomOrder()->get()->first();
+    $quote = Quotation::inRandomOrder()->get()->first();
+    return view('show-quote', compact('bg_image', 'quote'));
 });
 
 Route::middleware(['auth'])->group(function () {

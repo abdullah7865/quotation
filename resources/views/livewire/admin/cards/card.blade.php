@@ -2,12 +2,10 @@
     <div class="container mt-4">
         <h1 class="mb-4">Cards</h1>
 
-        <!-- Create Button -->
         <div class="d-flex justify-content-end mb-3">
             <a href="{{route ('create.cards')}}" class="btn btn-success btn-sm"><i class="fas fa-plus-circle me-2"></i>Create</a>
         </div>
 
-        <!-- Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
                 <thead>
