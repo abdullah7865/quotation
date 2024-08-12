@@ -1,0 +1,33 @@
+.custom-file-label::after {
+    content: "Browse";
+}
+.img-preview {
+    max-width: 150px;
+    max-height: 150px;
+    height: auto;
+    width: auto;
+    display: block;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    color: #495057;
+}
+
+.table thead th {
+    font-weight: bold;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.btn-sm {
+    margin-right: 5px;
+}
