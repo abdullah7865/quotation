@@ -24,6 +24,7 @@
             /* opacity: 0.5; */
             /* filter: blur(1px);
             -webkit-filter: blur(1px); */
+            /* object-fit: cover; */
         }
 
 
@@ -38,7 +39,7 @@
             font-size: 2rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
             text-align: center;
-            padding: 0 20px;
+            padding: 10px 20px;
             box-sizing: border-box;
             backdrop-filter: blur(5px);
         }
