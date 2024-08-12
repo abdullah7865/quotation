@@ -4,7 +4,7 @@
 
         <!-- Create Button -->
         <div class="d-flex justify-content-end mb-3">
-            <a href="{{route ('create.cards')}}" class="btn btn-success btn-sm">Create</a>
+            <a href="{{route ('create.cards')}}" class="btn btn-success btn-sm"><i class="fas fa-plus-circle me-2"></i>Create</a>
         </div>
 
         <!-- Table -->
@@ -46,8 +46,8 @@
             </table>
 
             <!-- Pagination Links -->
-            <div class="mt-3 flex justify-center">
-                {{ $cards->links('vendor.pagination.bootstrap-5') }}
+            <div class="mt-2 d-flex justify-content-center">
+                {{ $cards->links('vendor.pagination.bootstrap-4') }}
             </div>
         </div>
     </div>

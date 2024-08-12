@@ -9,12 +9,7 @@ use App\Models\BackgroundImage;
 class BackgroungImage extends Component
 {
     use WithPagination;
-    public $perPage = 10;
-
-    // public function mount()
-    // {
-    //     $this->images = BackgroundImage::paginate(10);
-    // }
+    public $perPage = 5;
 
     public function delete($id)
     {
