@@ -27,3 +27,8 @@
     <link id="theme-style" rel="stylesheet" href="{{asset('build/assets/css/portal.css')}}">
 
 </head>
+
+<body>
+    
+</body>
+</html>

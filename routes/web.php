@@ -7,15 +7,14 @@ use App\Models\Quotation;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function() {
+Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/{card}', function ($card) {
-
+Route::get('/quote/{card}', function ($card) {
     $card = Card::where('uuid', $card)->first();
 
-    if(!$card) {
+    if (!$card) {
         abort(404);
     }
 
