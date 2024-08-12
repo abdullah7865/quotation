@@ -35,8 +35,6 @@ class Card extends Component
                 'text' => 'Status updated successfully.',
                 'icon' => 'success',
             ]);
-
-            return redirect()->route('cards');
         }
     }
 }
