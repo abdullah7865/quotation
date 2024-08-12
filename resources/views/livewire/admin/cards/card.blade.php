@@ -2,8 +2,13 @@
     <div class="container mt-4">
         <h1 class="mb-4">Cards</h1>
 
-        <div class="d-flex justify-content-end mb-3">
-            <a href="{{route ('create.cards')}}" class="btn btn-success btn-sm"><i class="fas fa-plus-circle me-2"></i>Create</a>
+        <div class="d-flex justify-content-end mb-3 gap-2">
+            <a href="{{ route('create.cards') }}" class="btn btn-success btn-sm">
+                <i class="fas fa-plus-circle me-2"></i>Create
+            </a>
+            <a href="{{ route('cards.exportCsv') }}" class="btn btn-success btn-sm">
+                <i class="fas fa-download"></i> Download CSV
+            </a>
         </div>
 
         <div class="table-responsive">
@@ -18,11 +23,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($cards as $card)
+                    @foreach ($cards as $card)
                         <tr>
                             <td>
                                 {{ $card->uuid }}
-                                <button onclick="copyToClipboard('{{ url('/quote/' . $card->uuid) }}')" class="btn btn-sm btn-outline-primary">
+                                <button onclick="copyToClipboard('{{ url('/quote/' . $card->uuid) }}')"
+                                    class="btn btn-sm btn-outline-primary">
                                     <i class="fas fa-copy"></i> <!-- Font Awesome icon for copy -->
                                 </button>
                             </td>
@@ -33,8 +39,10 @@
                                 </span>
                             </td>
                             <td>
-                                <select class="form-select form-select-sm" name="status" aria-label="Status" wire:change="updateStatus({{ $card->id }}, $event.target.value)">
-                                    <option value="0" {{ $card->status == '0' ? 'selected' : '' }}>Inactive</option>
+                                <select class="form-select form-select-sm" name="status" aria-label="Status"
+                                    wire:change="updateStatus({{ $card->id }}, $event.target.value)">
+                                    <option value="0" {{ $card->status == '0' ? 'selected' : '' }}>Inactive
+                                    </option>
                                     <option value="1" {{ $card->status == '1' ? 'selected' : '' }}>Active</option>
                                 </select>
                             </td>
@@ -55,11 +63,11 @@
     <script>
         window.addEventListener('swal', event => {
 
-             Swal.fire({
-                 title: event.detail[0].title,
-                 text: event.detail[0].text,
-                 icon: event.detail[0].icon,
-             });
-         });
-     </script>
+            Swal.fire({
+                title: event.detail[0].title,
+                text: event.detail[0].text,
+                icon: event.detail[0].icon,
+            });
+        });
+    </script>
 </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CardController;
 use App\Http\Controllers\ProfileController;
 use App\Models\BackgroundImage;
 use App\Models\Card;
@@ -42,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
     //cards
     Route::view('/cards', 'admin.cards.card')->name('cards');
     Route::view('/create-cards', 'admin.cards.create')->name('create.cards');
+    Route::get('/export-cards', [CardController::class, 'exportCsv'])->name('cards.exportCsv');
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
