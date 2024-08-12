@@ -10,7 +10,6 @@
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>UUID</th>
                         <th>Description</th>
                         <th>Status</th>
@@ -21,8 +20,12 @@
                 <tbody>
                     @foreach($cards as $card)
                         <tr>
-                            <td>{{ $card->id }}</td>
-                            <td>{{ $card->uuid }}</td>
+                            <td>
+                                {{ $card->uuid }}
+                                <button onclick="copyToClipboard('{{ url('/quote/' . $card->uuid) }}')" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-copy"></i> <!-- Font Awesome icon for copy -->
+                                </button>
+                            </td>
                             <td>{{ $card->description }}</td>
                             <td>
                                 <span class="{{ $card->status == '1' ? 'text-success' : 'text-danger' }}">
@@ -49,7 +52,6 @@
             </div>
         </div>
     </div>
-
     <script>
         window.addEventListener('swal', event => {
 

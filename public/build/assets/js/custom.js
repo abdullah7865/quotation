@@ -15,7 +15,7 @@ document.getElementById('imageUpload').addEventListener('change', function(event
     }
 });
 
-
+//update image preview
 document.addEventListener('livewire:load', function () {
     Livewire.on('swal', (event) => {
         Swal.fire(event);
@@ -38,4 +38,20 @@ document.addEventListener('livewire:load', function () {
         }
     });
 });
+
+
+// copy to clipboard uuid
+
+function copyToClipboard(text) {
+    var tempInput = document.createElement("input");
+    tempInput.style.position = "absolute";
+    tempInput.style.left = "-9999px";
+    tempInput.value = text;
+
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    alert("Copied to clipboard: " + text);
+}
 
