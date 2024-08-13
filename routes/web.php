@@ -1,13 +1,14 @@
 <?php
 
 use App\Models\Card;
+use App\Models\Quote;
 use App\Models\BackgroundImage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Quote;
-use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -30,11 +31,17 @@ Route::get('/p/{card}', function ($card) {
         abort(404);
     }
 
-    $bg_image = BackgroundImage::inRandomOrder()->first();
-    $quote = Quote::inRandomOrder()->first();
+    $cacheKey = 'quote_and_bg_image_' . $card->id;
+    $cacheTime = 18 * 60;
 
+    $data = Cache::remember($cacheKey, $cacheTime, function () {
+        return [
+            'bg_image' => BackgroundImage::inRandomOrder()->first(),
+            'quote' => Quote::inRandomOrder()->first()
+        ];
+    });
 
-    return view('show-quote', compact('bg_image', 'quote'));
+    return view('show-quote', $data);
 });
 
 Route::get('read-csv', function () {
