@@ -30,15 +30,17 @@ Route::get('/p/{card}', function ($card) {
         abort(404);
     }
 
-    $bg_image = BackgroundImage::inRandomOrder()->get()->first();
+    $bg_image = BackgroundImage::inRandomOrder()->first();
+    $quote = Quote::inRandomOrder()->first();
+
     if (!$bg_image) {
-        return view('error', compact('bg_image'))->with('bg_color', 'white');
+        return view('error')->with('bg_color', 'white')->with('message', 'No background image found');
     }
 
-    $quote = Quote::inRandomOrder()->get()->first();
     if (!$quote) {
-        return view('error',compact('quote'))->with('message', 'No quote found')->with('bg_color', 'white');
+        return view('error', compact('bg_image'))->with('message', 'No quote found');
     }
+
     return view('show-quote', compact('bg_image', 'quote'));
 });
 
