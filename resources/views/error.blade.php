@@ -10,6 +10,16 @@
             background-color: {{ $bg_color ?? 'transparent' }};
             background-image: url('{{ $bg_image->url ?? '' }}');
             background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2rem;
+            text-align: center;
         }
     </style>
 </head>
