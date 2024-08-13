@@ -1,21 +1,37 @@
 <div>
-    <div class="row g-4 mb-4">
-        <div class="col-6 col-lg-3">
+    <div class="row mb-4 d-flex justify-content-around text-center">
+        <!-- Quotations Card -->
+        <div class="col-12 col-md-4 col-lg-3">
             <div class="app-card app-card-stat shadow-sm h-100">
-                <div class="app-card-body p-3 p-lg-4">
-                    <h4 class="stats-type mb-1">Quotations</h4>
-                    <div class="stats-figure">{{$totalQuotations}}</div>
-                </div><!--//app-card-body-->
-            </div><!--//app-card-->
-        </div><!--//col-->
+                <div class="app-card-body p-4">
+                    <i class="fa-solid fa-list fa-3x text-primary mb-3"></i>
+                    <h4 class="stats-type mb-2 text-uppercase text-muted">Quotations</h4>
+                    <div class="stats-figure display-4 font-weight-bold">{{$totalQuotations}}</div>
+                </div>
+            </div>
+        </div>
 
-        <div class="col-6 col-lg-3">
+        <!-- Background Images Card -->
+        <div class="col-12 col-md-4 col-lg-3">
             <div class="app-card app-card-stat shadow-sm h-100">
-                <div class="app-card-body p-3 p-lg-4">
-                    <h4 class="stats-type mb-1">Background Images</h4>
-                    <div class="stats-figure">{{$totalBackgroundImages}}</div>
-                </div><!--//app-card-body-->
-            </div><!--//app-card-->
-        </div><!--//col-->
-    </div><!--//row-->
+                <div class="app-card-body p-4">
+                    <i class="fas fa-image fa-3x text-success mb-3"></i>
+                    <h4 class="stats-type mb-2 text-uppercase text-muted">Background Images</h4>
+                    <div class="stats-figure display-4 font-weight-bold">{{$totalBackgroundImages}}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards Card -->
+        <div class="col-12 col-md-4 col-lg-3">
+            <div class="app-card app-card-stat shadow-sm h-100">
+                <div class="app-card-body p-4">
+                    <i class="fa-brands fa-cc-diners-club fa-3x text-warning mb-3"></i>
+                    <h4 class="stats-type mb-2 text-uppercase text-muted">Cards</h4>
+                    <div class="stats-figure display-4 font-weight-bold">{{$totalCards}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
