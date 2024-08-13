@@ -12,6 +12,12 @@ class QuoteComponent extends Component
     public $perPage = 10;
     public $quotes;
 
+
+    public function mount()
+    {
+        $this->quotes = Quote::all();
+    }
+
     public function render()
     {
         $quotes = Quote::paginate($this->perPage);
