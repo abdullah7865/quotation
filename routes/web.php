@@ -32,7 +32,7 @@ Route::get('/p/{card}', function ($card) {
 
     $bg_image = BackgroundImage::inRandomOrder()->get()->first();
     if (!$bg_image) {
-        return view('error', compact('quote'))->with('bg_color', 'white');
+        return view('error', compact('bg_image'))->with('bg_color', 'white');
     }
 
     $quote = Quote::inRandomOrder()->get()->first();
