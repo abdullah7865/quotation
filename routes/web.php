@@ -36,7 +36,7 @@ Route::get('/p/{card}', function ($card) {
     }
     $quote = Quote::inRandomOrder()->get()->first();
     if (!$quote) {
-        abort(404);
+        return view('show-quote')->with('message', 'No quote found')->with('bg_color', 'white');
     }
     return view('show-quote', compact('bg_image', 'quote'));
 });
