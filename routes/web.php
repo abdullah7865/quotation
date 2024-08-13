@@ -32,11 +32,12 @@ Route::get('/p/{card}', function ($card) {
 
     $bg_image = BackgroundImage::inRandomOrder()->get()->first();
     if (!$bg_image) {
-        abort(404);
+        return view('error', compact('quote'))->with('bg_color', 'white');
     }
+
     $quote = Quote::inRandomOrder()->get()->first();
     if (!$quote) {
-        return view('show-quote')->with('message', 'No quote found')->with('bg_color', 'white');
+        return view('error')->with('message', 'No quote found')->with('bg_color', 'white');
     }
     return view('show-quote', compact('bg_image', 'quote'));
 });
