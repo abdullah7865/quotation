@@ -23,7 +23,7 @@ Route::get('/storage-link', function () {
     dd("storage linked");
 });
 
-Route::get('/quote/{card}', function ($card) {
+Route::get('/p/{card}', function ($card) {
     $card = Card::where('uuid', $card)->first();
 
     if (!$card) {
@@ -31,7 +31,13 @@ Route::get('/quote/{card}', function ($card) {
     }
 
     $bg_image = BackgroundImage::inRandomOrder()->get()->first();
+    if (!$bg_image) {
+        abort(404);
+    }
     $quote = Quote::inRandomOrder()->get()->first();
+    if (!$quote) {
+        abort(404);
+    }
     return view('show-quote', compact('bg_image', 'quote'));
 });
 
