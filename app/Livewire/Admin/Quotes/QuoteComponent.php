@@ -4,19 +4,22 @@ namespace App\Livewire\Admin\Quotes;
 
 use App\Models\Quote;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class QuoteComponent extends Component
 {
+    use WithPagination;
+    public $perPage = 10;
     public $quotes;
-
-    public function mount()
-    {
-        $this->quotes = Quote::all();
-    }
 
     public function render()
     {
-        return view('livewire.admin.quotes.quote-component');
+        $quotes = Quote::paginate($this->perPage);
+        return view('livewire.admin.quotes.quote-component', [
+            'quotes' => $quotes,
+        ]
+    );
+
     }
 
     public function delete($id)
