@@ -43,9 +43,6 @@
                             @endforelse
                         </tbody>
                     </table>
-                    <div class="mt-2 d-flex justify-content-center">
-                        {{ $quote->links('vendor.pagination.bootstrap-4') }}
-                    </div>
                 </div>
             </div>
         </div>
