@@ -33,13 +33,6 @@ Route::get('/p/{card}', function ($card) {
     $bg_image = BackgroundImage::inRandomOrder()->first();
     $quote = Quote::inRandomOrder()->first();
 
-    if (!$bg_image) {
-        return view('error')->with('bg_color', 'white')->with('message', 'No background image found');
-    }
-
-    if (!$quote) {
-        return view('error', compact('bg_image'))->with('message', 'No quote found');
-    }
 
     return view('show-quote', compact('bg_image', 'quote'));
 });

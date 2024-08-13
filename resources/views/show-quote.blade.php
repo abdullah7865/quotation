@@ -15,18 +15,12 @@
     <style>
         .quote-background {
             position: relative;
-        }
-
-        .quote-background img {
-            width: 100%;
             height: 100vh;
-            display: block;
-            /* opacity: 0.5; */
-            /* filter: blur(1px);
-            -webkit-filter: blur(1px); */
-            /* object-fit: cover; */
-        }
+            width: 100%;
+            background-position: center center;
+            background-size: cover;
 
+        }
 
 
         .quote-background .quote-text {
@@ -47,20 +41,19 @@
 </head>
 
 <body>
+
+    @php
+        $backgroundImage = $bg_image ? 'url(' . asset(Storage::url($bg_image->image)) . ')' : 'none';
+        $brec_quote = $quote->quote ?? 'No quote available';
+    @endphp
+
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-12 col-lg-5">
-                <div class="quote-background">
-                    {{-- <img src="https://plus.unsplash.com/premium_photo-1669689974101-55f9aea22158?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        class="img-fluid border border-1" alt="Background Image"> --}}
-                    <img src="{{ asset(Storage::url($bg_image->image)) }}" class="img-fluid border border-1"
-                        alt="Background Image">
+                <div class="quote-background" style="background-image: {{ $backgroundImage }}">
                     <div class="quote-text">
-                        {{ $quote->quote }}
+                        {{ $brec_quote }}
                     </div>
-                    {{-- <div class="quote-text position-absolute">
-                        The way to get started is to quit talking and begin doing
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -73,8 +66,3 @@
 </body>
 
 </html>
-
-
-
-{{-- <img src="{{ asset(Storage::url($bg_image->image)) }}" alt="" height="200" width="200">
-    <p> {{ $quote->quote }} </p> --}}
