@@ -23,7 +23,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($cards as $card)
+                    @forelse ($cards as $card)
                         <tr>
                             <td>
                                 {{ $card->uuid }}
@@ -50,7 +50,11 @@
                                 <button class="btn btn-primary btn-sm">Edit</button>
                             </td>
                         </tr>
-                    @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="3" class="text-center text-muted">No card available</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
 

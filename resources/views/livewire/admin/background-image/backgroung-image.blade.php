@@ -25,7 +25,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($images as $image)
+                                    @forelse ($images as $image)
                                         <tr>
                                             <td class="text-center">
                                                 <img src="{{ asset('storage/' . $image->image) }}" alt="Image"
@@ -44,7 +44,11 @@
                                                 </button>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                        @empty
+                                        <tr>
+                                            <td colspan="3" class="text-center text-muted">No Image available</td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

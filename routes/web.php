@@ -15,6 +15,12 @@ Route::get('/', function () {
 
 Route::get('/optimize', function() {
     Artisan::call('optimize:clear');
+    dd("cleard");
+});
+
+Route::get('/storage-link', function () {
+    Artisan::call('storage:link');
+    dd("storage linked");
 });
 
 Route::get('/quote/{card}', function ($card) {
