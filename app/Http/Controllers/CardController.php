@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
 class CardController extends Controller

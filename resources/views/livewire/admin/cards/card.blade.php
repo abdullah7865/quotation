@@ -29,7 +29,7 @@
                                 {{ $card->uuid }}
                                 <button onclick="copyToClipboard('{{ url('/quote/' . $card->uuid) }}')"
                                     class="btn btn-sm btn-outline-primary">
-                                    <i class="fas fa-copy"></i> <!-- Font Awesome icon for copy -->
+                                    <i class="fas fa-copy"></i>
                                 </button>
                             </td>
                             <td>{{ $card->description }}</td>
