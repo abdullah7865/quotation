@@ -68,7 +68,7 @@
 
 
         function confirmDeletion(imageId) {
-            if (confirm('Are you sure you want to delete this quotation?')) {
+            if (confirm('Are you sure you want to delete this Quote?')) {
                 @this.call('delete', imageId);
             }
         }

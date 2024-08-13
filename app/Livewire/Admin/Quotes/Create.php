@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Livewire\Admin\Quotation;
+namespace App\Livewire\Admin\Quotes;
 
-use App\Models\Quotation;
+use App\Models\Quote;
 use Livewire\Component;
 
 class Create extends Component
@@ -22,23 +22,23 @@ class Create extends Component
     {
         $this->validate();
 
-        Quotation::create([
+        Quote::create([
             'quote' => $this->quote,
         ]);
 
         $this->dispatch('swal', [
             'title' => 'Success!',
-            'text' => 'Your Quotation has been created.',
+            'text' => 'Your Quote has been created.',
             'icon' => 'success',
         ]);
 
 
         $this->reset('quote');
-        return redirect()->route('admin.quotations');
+        return redirect()->route('admin.quotes');
     }
 
     public function render()
     {
-        return view('livewire.admin.quotation.create');
+        return view('livewire.admin.quotes.create');
     }
 }

@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Livewire\Admin\Quotation;
+namespace App\Livewire\Admin\Quotes;
 
-use App\Models\Quotation;
+use App\Models\Quote;
 use Livewire\Component;
 
 class Edit extends Component
 {
 
-    public $quotationId;
+    public $quoteId;
     public $quote;
 
-    public function mount($id)
+    public function mount()
     {
-        $quotation = Quotation::findOrFail($id);
-        $this->quotationId = $quotation->id;
+        $id = request()->route('id');
+        $quotation = Quote::findOrFail($id);
+        $this->quoteId = $quotation->id;
         $this->quote = $quotation->quote;
     }
 
@@ -24,7 +25,7 @@ class Edit extends Component
             'quote' => 'required|string|max:255',
         ]);
 
-        $quotation = Quotation::findOrFail($this->quotationId);
+        $quotation = Quote::findOrFail($this->quoteId);
         $quotation->quote = $this->quote;
         $quotation->save();
 
@@ -34,11 +35,11 @@ class Edit extends Component
             'icon' => 'success',
         ]);
 
-        return redirect()->route('admin.quotations');
+        return redirect()->route('admin.quotes');
     }
 
     public function render()
     {
-        return view('livewire.admin.quotation.edit');
+        return view('livewire.admin.quotes.edit');
     }
 }

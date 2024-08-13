@@ -1,4 +1,4 @@
 @extends('layouts.admin.admin-base')
 @section('content')
-<livewire:admin.quotation.create>
+<livewire:admin.quotes.create>
 @endsection

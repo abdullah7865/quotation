@@ -21,12 +21,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('admin.quotations') ? 'active' : '' }}"
-                        href="{{ route('admin.quotations') }}">
+                    <a class="nav-link {{ request()->routeIs('admin.quotes') ? 'active' : '' }}"
+                        href="{{ route('admin.quotes') }}">
                         <span class="nav-icon">
                             <i class="fa-solid fa-list"></i>
                         </span>
-                        <span class="nav-link-text">Quotations</span>
+                        <span class="nav-link-text">Quotes</span>
                     </a>
                 </li>
                 <li class="nav-item">

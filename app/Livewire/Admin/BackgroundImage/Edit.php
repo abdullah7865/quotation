@@ -16,8 +16,9 @@ class Edit extends Component
     public $backgroundImageId;
     public $imagePreview;
 
-    public function mount($id)
+    public function mount()
     {
+        $id = request()->route('id');
         $this->backgroundImageId = $id;
         $backgroundImage = BackgroundImage::findOrFail($id);
         $this->currentImage = $backgroundImage->image;

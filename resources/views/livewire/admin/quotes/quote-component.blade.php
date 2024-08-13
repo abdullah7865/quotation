@@ -2,7 +2,7 @@
     <div class="container mt-5">
         <div class="row mb-4">
             <div class="col text-end">
-                <a href="{{ route('quotation.create') }}" class="btn btn-success">
+                <a href="{{ route('quote.create') }}" class="btn btn-success">
                     <i class="fas fa-plus-circle me-2"></i>Add Quote
                 </a>
             </div>
@@ -23,15 +23,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($quotations as $quotation)
+                            @forelse($quotes as $quote)
                                 <tr>
-                                    <td class="text-dark">{{ $quotation->quote }}</td>
-                                    <td class="text-muted">{{ $quotation->created_at->format('Y-m-d') }}</td>
+                                    <td class="text-dark">{{ $quote->quote }}</td>
+                                    <td class="text-muted">{{ $quote->created_at->format('Y-m-d') }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('quote.edit', $quotation->id) }}" class="btn btn-outline-primary btn-sm">
+                                        <a href="{{ route('quote.edit', $quote->id) }}" class="btn btn-outline-primary btn-sm">
                                             <i class="fas fa-edit"></i> Edit
                                         </a>
-                                        <button class="btn btn-outline-danger btn-sm" onclick="confirmDeletion({{ $quotation->id }})">
+                                        <button class="btn btn-outline-danger btn-sm" onclick="confirmDeletion({{ $quote->id }})">
                                             <i class="fas fa-trash-alt"></i> Delete
                                         </button>
                                     </td>
@@ -59,7 +59,7 @@
 
 
          function confirmDeletion(quotationId) {
-            if (confirm('Are you sure you want to delete this quotation?')) {
+            if (confirm('Are you sure you want to delete this Quote?')) {
                 @this.call('delete', quotationId);
             }
         }

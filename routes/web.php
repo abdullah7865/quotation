@@ -1,16 +1,20 @@
 <?php
 
 use App\Models\Card;
-use App\Models\Quotation;
 use App\Models\BackgroundImage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\ProfileController;
-
+use App\Models\Quote;
+use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', function () {
     return redirect()->route('login');
+});
+
+Route::get('/optimize', function() {
+    Artisan::call('optimize:clear');
 });
 
 Route::get('/quote/{card}', function ($card) {
@@ -21,7 +25,7 @@ Route::get('/quote/{card}', function ($card) {
     }
 
     $bg_image = BackgroundImage::inRandomOrder()->get()->first();
-    $quote = Quotation::inRandomOrder()->get()->first();
+    $quote = Quote::inRandomOrder()->get()->first();
     return view('show-quote', compact('bg_image', 'quote'));
 });
 
@@ -61,9 +65,9 @@ Route::middleware(['auth'])->group(function () {
     Route::view('/dashboard', 'admin.dashboard')->name('admin.dashboard');
     // quotations
 
-    Route::view('/quotations', 'admin.quotation.quotations')->name('admin.quotations');
-    Route::view('/create-quotation', 'admin.quotation.create')->name('quotation.create');
-    Route::view('/edit-quote/{id}', 'admin.quotation.edit')->name('quote.edit');
+    Route::view('/quotes', 'admin.quotes.quote')->name('admin.quotes');
+    Route::view('/create-quote', 'admin.quotes.create')->name('quote.create');
+    Route::view('/edit-quote/{id}', 'admin.quotes.edit')->name('quote.edit');
 
     //background Image
     Route::view('/background-image', 'admin.background-image.background-image')->name('background.image');

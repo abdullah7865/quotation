@@ -1,4 +1,4 @@
 @extends('layouts.admin.admin-base')
 @section('content')
-@livewire('admin\cards.card')
+<livewire:admin.cards.card />
 @endsection
