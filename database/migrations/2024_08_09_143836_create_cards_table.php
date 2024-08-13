@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid')->unique();
-            $table->text('description');
-            $table->boolean('status')->default(1);
+            $table->text('description')->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

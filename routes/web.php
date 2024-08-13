@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\CardController;
-use App\Http\Controllers\ProfileController;
-use App\Models\BackgroundImage;
 use App\Models\Card;
 use App\Models\Quotation;
+use App\Models\BackgroundImage;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CardController;
+use App\Http\Controllers\ProfileController;
 
 
 Route::get('/', function () {
@@ -22,6 +23,38 @@ Route::get('/quote/{card}', function ($card) {
     $bg_image = BackgroundImage::inRandomOrder()->get()->first();
     $quote = Quotation::inRandomOrder()->get()->first();
     return view('show-quote', compact('bg_image', 'quote'));
+});
+
+Route::get('read-csv', function () {
+    $path = public_path('data.csv');
+    $data = [];
+
+    if (($handle = fopen($path, 'r')) !== false) {
+        DB::beginTransaction();
+        try {
+            while (($row = fgetcsv($handle, 1000, ',')) !== false) {
+                $position = strpos($row[0], "p/");
+
+                if ($position !== false) {
+                    $substring = substr($row[0], $position + 2);
+
+                    Card::create([
+                        'uuid' => $substring
+                    ]);
+
+                    $data[] = $substring;
+                } else {
+                    DB::rollBack();
+                }
+            }
+
+            fclose($handle);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd("Error occurred: " . $e->getMessage());
+        }
+    }
 });
 
 Route::middleware(['auth'])->group(function () {
