@@ -21,8 +21,8 @@ class QuoteComponent extends Component
 
     public function delete($id)
     {
-        $quotation = Quote::findOrFail($id);
-        $quotation->delete();
+        $quote = Quote::findOrFail($id);
+        $quote->delete();
 
         $this->dispatch('swal', [
             'title' => 'Success!',

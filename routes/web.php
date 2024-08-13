@@ -63,7 +63,7 @@ Route::get('read-csv', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::view('/dashboard', 'admin.dashboard')->name('admin.dashboard');
-    // quotations
+    // quotes
 
     Route::view('/quotes', 'admin.quotes.quote')->name('admin.quotes');
     Route::view('/create-quote', 'admin.quotes.create')->name('quote.create');

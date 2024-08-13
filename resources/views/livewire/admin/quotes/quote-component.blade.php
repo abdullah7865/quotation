@@ -58,9 +58,9 @@
          });
 
 
-         function confirmDeletion(quotationId) {
+         function confirmDeletion(quoteId) {
             if (confirm('Are you sure you want to delete this Quote?')) {
-                @this.call('delete', quotationId);
+                @this.call('delete', quoteId);
             }
         }
      </script>

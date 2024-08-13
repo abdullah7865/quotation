@@ -14,9 +14,9 @@ class Edit extends Component
     public function mount()
     {
         $id = request()->route('id');
-        $quotation = Quote::findOrFail($id);
-        $this->quoteId = $quotation->id;
-        $this->quote = $quotation->quote;
+        $quote = Quote::findOrFail($id);
+        $this->quoteId = $quote->id;
+        $this->quote = $quote->quote;
     }
 
     public function update()
@@ -25,13 +25,13 @@ class Edit extends Component
             'quote' => 'required|string|max:255',
         ]);
 
-        $quotation = Quote::findOrFail($this->quoteId);
-        $quotation->quote = $this->quote;
-        $quotation->save();
+        $quote = Quote::findOrFail($this->quoteId);
+        $quote->quote = $this->quote;
+        $quote->save();
 
         $this->dispatch('swal', [
             'title' => 'Success!',
-            'text' => 'Your Quotation has been updated.',
+            'text' => 'Your Quote has been updated.',
             'icon' => 'success',
         ]);
 
