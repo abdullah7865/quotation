@@ -52,6 +52,12 @@ function copyToClipboard(text) {
     tempInput.select();
     document.execCommand("copy");
     document.body.removeChild(tempInput);
-    alert("Copied to clipboard: " + text);
+
+    Swal.fire({
+        title: 'Copied!',
+        text: `Copied to clipboard: ${text}`,
+        icon: 'success',
+        confirmButtonColor: '#3085d6',
+    });
 }
 
