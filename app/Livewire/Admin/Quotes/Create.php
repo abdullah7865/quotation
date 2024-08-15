@@ -10,7 +10,7 @@ class Create extends Component
     public $quote;
 
     protected $rules = [
-        'quote' => 'required|string|max:255',
+        'quote' => 'required',
     ];
 
     public function updated($fields)

@@ -22,7 +22,7 @@ class Edit extends Component
     public function update()
     {
         $this->validate([
-            'quote' => 'required|string|max:255',
+            'quote' => 'required',
         ]);
 
         $quote = Quote::findOrFail($this->quoteId);
