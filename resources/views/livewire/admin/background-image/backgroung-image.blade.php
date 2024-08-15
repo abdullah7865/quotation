@@ -61,20 +61,28 @@
         </div>
     </div>
     <script>
-        window.addEventListener('swal', event => {
-
-            Swal.fire({
-                title: event.detail[0].title,
-                text: event.detail[0].text,
-                icon: event.detail[0].icon,
-            });
+       window.addEventListener('swal', event => {
+        Swal.fire({
+            title: event.detail[0].title,
+            text: event.detail[0].text,
+            icon: event.detail[0].icon,
         });
+    });
 
-
-        function confirmDeletion(imageId) {
-            if (confirm('Are you sure you want to delete this Quote?')) {
+    function confirmDeletion(imageId) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
                 @this.call('delete', imageId);
             }
-        }
+        });
+    }
     </script>
 </div>
